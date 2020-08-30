@@ -6,7 +6,9 @@ use MyPlugin\Shortcode\ShortcodeContacts;
 use MyPlugin\Shortcode\ShortcodeLatestPosts;
 use MyPlugin\Shortcode\ShortcodeSlogan;
 use MyPlugin\Shortcode\ShortcodeProjects;
-use MyPlugin\Shortcode\ShortcodeReservations;
+use MyPlugin\Shortcode\ShortcodeWeAccomplished;
+use MyPlugin\Shortcode\ShortcodeProcedure;
+use MyPlugin\Shortcode\ShortcodeServices;
 
 /**
  * @author lookawesome team
@@ -27,7 +29,9 @@ class ShortcodeInit
 		new ShortcodeLatestPosts($this);
 		new ShortcodeSlogan($this);
 		new ShortcodeProjects($this);
-		new ShortcodeReservations($this);
+		new ShortcodeWeAccomplished($this);
+		new ShortcodeProcedure($this);
+		new ShortcodeServices($this);
 	}
 
 	/**

@@ -15,7 +15,7 @@
          * @return string
          */
         public function get_name() {
-            return 'design_construct_projects';
+            return 'awe_projects';
         }
 
         /**

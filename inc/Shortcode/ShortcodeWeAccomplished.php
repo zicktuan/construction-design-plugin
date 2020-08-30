@@ -1,7 +1,7 @@
 <?php
     namespace MyPlugin\Shortcode;
 
-    class ShortcodeReservations extends AbstractShortcode
+    class ShortcodeWeAccomplished extends AbstractShortcode
     {
         public function __construct($self = null) {
             $this->parent = $self;
@@ -15,7 +15,7 @@
          * @return string
          */
         public function get_name() {
-            return 'design_construct_reservations';
+            return 'awe_we_accomplished';
         }
 
         /**
@@ -30,7 +30,7 @@
             $atts = array_map('trim', $atts);
 
             ob_start();
-            include $this->parent->locateTemplate('shortcode-reservations.tpl.php');
+            include $this->parent->locateTemplate('shortcode-we-accomplished.tpl.php');
             return ob_get_clean();
         }
 
@@ -47,8 +47,8 @@
             );
 
             return array(
-                'name'        => esc_html__('Reservations', 'bookawesome'),
-                'description' => esc_html__('Reservations', 'bookawesome'),
+                'name'        => esc_html__('We-Accomplished', 'bookawesome'),
+                'description' => esc_html__('We-Accomplished', 'bookawesome'),
                 'category'    => $this->get_category(),
                 'icon'        => $this->get_icon(),
                 'params'      => $params

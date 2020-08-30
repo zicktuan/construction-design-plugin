@@ -1,7 +1,7 @@
 <?php
 namespace MyPlugin\Shortcode;
 
-class ShortcodeContacts extends AbstractShortcode
+class ShortcodeProcess extends AbstractShortcode
 {
     public function __construct($self = null) {
         $this->parent = $self;
@@ -15,7 +15,7 @@ class ShortcodeContacts extends AbstractShortcode
      * @return string
      */
     public function get_name() {
-        return 'awe_contact';
+        return 'awe_process';
     }
 
     /**
@@ -32,7 +32,7 @@ class ShortcodeContacts extends AbstractShortcode
         $listItems = vc_param_group_parse_atts( $atts['items'] );
 
         ob_start();
-        include $this->parent->locateTemplate('shortcode-contact.tpl.php');
+            include $this->parent->locateTemplate('shortcode-process.tpl.php');
         return ob_get_clean();
     }
 
@@ -46,44 +46,27 @@ class ShortcodeContacts extends AbstractShortcode
     public function map() {
         $params = array(
             array(
-                'type'       => 'attach_image',
-                'param_name' => 'awe_contact_bg',
-                'heading'    => esc_html__('Background', 'bookawesome')
-            ),
-            array(
                 'type'       => 'param_group',
                 'param_name' => 'items',
-                'heading'    => esc_html__( 'List Item', 'bookawesome' ),
+                'heading'    => esc_html__( 'Tabs', 'bookawesome' ),
                 'params'     => array(
                     array(
-                        'type'        => 'dropdown',
-                        'heading'     => __('Icon'),
-                        'param_name'  => 'awe_contact_item_icon',
-                        'admin_label' => true,
-                        'value'       => array(
-                            'Pencil'     => 'icon-pencil',
-                            'Map'        => 'icon-map-pin',
-                            'Megaphone'  => 'icon-megaphone',
-                            'Tools'      => 'icon-tools',
-                        ),
-                    ),
-                    array(
                         'type'       => 'textfield',
-                        'param_name' => 'awe_contact_item_desc',
-                        'heading'    => esc_html__('Description', 'bookawesome')
-                    ),
-                    array(
-                        'type'       => 'textfield',
-                        'param_name' => 'awe_contact_item_title',
+                        'param_name' => 'title',
                         'heading'    => esc_html__('Title', 'bookawesome')
                     ),
+                    array(
+                        'type'       => 'attach_images',
+                        'param_name' => 'awe_projects_item_bg',
+                        'heading'    => esc_html__('Background', 'bookawesome')
+                    )
                 )
             )
         );
 
         return array(
-            'name'        => esc_html__('Contacts', 'bookawesome'),
-            'description' => esc_html__('Contacts', 'bookawesome'),
+            'name'        => esc_html__('Process', 'bookawesome'),
+            'description' => esc_html__('Process', 'bookawesome'),
             'category'    => $this->get_category(),
             'icon'        => $this->get_icon(),
             'params'      => $params

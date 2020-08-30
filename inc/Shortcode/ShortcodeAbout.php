@@ -15,7 +15,7 @@ class ShortcodeAbout extends AbstractShortcode
      * @return string
      */
     public function get_name() {
-        return 'las_personal_about';
+        return 'awe_about';
     }
 
     /**

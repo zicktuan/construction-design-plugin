@@ -15,7 +15,7 @@ class ShortcodeLatestPosts extends AbstractShortcode
      * @return string
      */
     public function get_name() {
-        return 'design_construct_post';
+        return 'awe_latest_post';
     }
 
     /**
