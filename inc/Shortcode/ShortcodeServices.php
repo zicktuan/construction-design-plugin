@@ -48,7 +48,6 @@ class ShortcodeServices extends AbstractShortcode
             'post_type'      => 'awe_services_pt'
         );
         $listProjects = get_posts( $args );
-//        print_r($listProjects);
         $argsPost = [];
         foreach ($listProjects as $value) {
             $tmp          = [];
@@ -59,11 +58,6 @@ class ShortcodeServices extends AbstractShortcode
 
 
         $params = array(
-//            array(
-//                'type'       => 'attach_image',
-//                'param_name' => 'las_about_image',
-//                'heading'    => esc_html__('Background', 'bookawesome')
-//            ),
             array(
                 'type'       => 'textfield',
                 'param_name' => 'awe_project_title',
@@ -88,7 +82,7 @@ class ShortcodeServices extends AbstractShortcode
             ),
             array(
                 'type'       => 'autocomplete',
-                'param_name' => 'featured_tour',
+                'param_name' => 'list_service_vc',
                 'heading'    => esc_html__('Featured tours', 'bookawesome'),
                 'settings'   => array(
                     'multiple'       => true,

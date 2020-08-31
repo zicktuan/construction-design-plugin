@@ -79,9 +79,6 @@ class ThemeSettingInit
 
 	public function loadModuleSetting (){
         $this->argsObjSetting[] = new AdminSettings\General;
-        $this->argsObjSetting[] = new AdminSettings\Header;
-        $this->argsObjSetting[] = new AdminSettings\Footer;
-        $this->argsObjSetting[] = new AdminSettings\Blog;
 		$this->argsObjSetting[] = new AdminSettings\Services;
 		$this->argsObjSetting[] = new AdminSettings\Projects;
 	}
