@@ -56,12 +56,17 @@ class ShortcodeSlogan extends AbstractShortcode
             array(
                 'type'       => 'textfield',
                 'param_name' => 'awe_slogan_title',
-                'heading'    => esc_html__('Title', 'bookawesome')
+                'heading'    => esc_html__('Slogan', 'bookawesome')
             ),
             array(
                 'type'       => 'textfield',
                 'param_name' => 'awe_slogan_author',
                 'heading'    => esc_html__('Author', 'bookawesome')
+            ),
+            array(
+                'type'       => 'textarea',
+                'param_name' => 'awe_slogan_desc',
+                'heading'    => esc_html__('Description', 'bookawesome')
             )
         );
 
