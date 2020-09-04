@@ -44,24 +44,34 @@
          * @see vc_lean_map()
          */
         public function map() {
+            $args = array(
+                'posts_per_page' => -1,
+                'post_type'      => 'awe_projects_pt'
+            );
+            $listProjects = get_posts( $args );
+            $argsPost = [];
+            foreach ($listProjects as $value) {
+                $tmp          = [];
+                $tmp['label'] = $value->post_title;
+                $tmp['value'] = $value->ID;
+                $argsPost[]   = $tmp;
+            }
             $params = array(
                 array(
-                    'type'       => 'param_group',
-                    'param_name' => 'items',
-                    'heading'    => esc_html__( 'Tabs', 'bookawesome' ),
-                    'params'     => array(
-                        array(
-                            'type'       => 'textfield',
-                            'param_name' => 'title',
-                            'heading'    => esc_html__('Title', 'bookawesome')
-                        ),
-                        array(
-                            'type'       => 'attach_images',
-                            'param_name' => 'awe_projects_item_bg',
-                            'heading'    => esc_html__('Background', 'bookawesome')
-                        )
-                    )
-                )
+                    'type'       => 'autocomplete',
+                    'param_name' => 'list_projects_vc',
+                    'heading'    => esc_html__('Projects', 'bookawesome'),
+                    'settings'   => array(
+                        'multiple'       => true,
+                        'sortable'       => true,
+                        'min_length'     => 1,
+                        'no_hide'        => true,
+                        'unique_values'  => true,
+                        'display_inline' => true,
+                        'values'         => $argsPost
+                    ),
+                    'save_always' => true,
+                ),
             );
 
             return array(

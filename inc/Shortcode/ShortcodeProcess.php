@@ -46,9 +46,24 @@ class ShortcodeProcess extends AbstractShortcode
     public function map() {
         $params = array(
             array(
+                'type'       => 'attach_images',
+                'param_name' => 'awe_process_bg',
+                'heading'    => esc_html__('Background', 'bookawesome')
+            ),
+            array(
+                'type'       => 'textfield',
+                'param_name' => 'awe_process_sub_title',
+                'heading'    => esc_html__('Sub Title', 'bookawesome')
+            ),
+            array(
+                'type'       => 'textfield',
+                'param_name' => 'awe_process_title',
+                'heading'    => esc_html__('Title', 'bookawesome')
+            ),
+            array(
                 'type'       => 'param_group',
                 'param_name' => 'items',
-                'heading'    => esc_html__( 'Tabs', 'bookawesome' ),
+                'heading'    => esc_html__( 'List Item', 'bookawesome' ),
                 'params'     => array(
                     array(
                         'type'       => 'textfield',
@@ -56,9 +71,9 @@ class ShortcodeProcess extends AbstractShortcode
                         'heading'    => esc_html__('Title', 'bookawesome')
                     ),
                     array(
-                        'type'       => 'attach_images',
-                        'param_name' => 'awe_projects_item_bg',
-                        'heading'    => esc_html__('Background', 'bookawesome')
+                        'type'       => 'textarea',
+                        'param_name' => 'desc',
+                        'heading'    => esc_html__('Description', 'bookawesome')
                     )
                 )
             )

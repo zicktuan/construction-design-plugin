@@ -9,6 +9,9 @@ use MyPlugin\Shortcode\ShortcodeProjects;
 use MyPlugin\Shortcode\ShortcodeWeAccomplished;
 use MyPlugin\Shortcode\ShortcodeProcedure;
 use MyPlugin\Shortcode\ShortcodeServices;
+use MyPlugin\Shortcode\ShortcodeProcess;
+use MyPlugin\Shortcode\ShortcodeClients;
+use MyPlugin\Shortcode\ShortcodeFeedBack;
 
 /**
  * @author lookawesome team
@@ -32,6 +35,9 @@ class ShortcodeInit
 		new ShortcodeWeAccomplished($this);
 		new ShortcodeProcedure($this);
 		new ShortcodeServices($this);
+		new ShortcodeProcess($this);
+		new ShortcodeClients($this);
+		new ShortcodeFeedBack($this);
 	}
 
 	/**

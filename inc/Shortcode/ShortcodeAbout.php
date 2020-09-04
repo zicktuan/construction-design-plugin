@@ -45,10 +45,20 @@ class ShortcodeAbout extends AbstractShortcode
      */
     public function map() {
         $params = array(
-        	array(
-                'type'       => 'attach_image',
-                'param_name' => 'las_about_image',
-                'heading'    => esc_html__('Background', 'bookawesome')
+//            array(
+//                'type'       => 'attach_images',
+//                'param_name' => 'awe_process_bg',
+//                'heading'    => esc_html__('Background', 'bookawesome')
+//            ),
+            array(
+                'type'       => 'textfield',
+                'param_name' => 'awe_about_sub_title',
+                'heading'    => esc_html__('Sub Title', 'bookawesome')
+            ),
+            array(
+                'type'       => 'textfield',
+                'param_name' => 'awe_about_title',
+                'heading'    => esc_html__('Title', 'bookawesome')
             ),
             array(
                 'type'       => 'param_group',
@@ -56,32 +66,58 @@ class ShortcodeAbout extends AbstractShortcode
                 'heading'    => esc_html__( 'List Item', 'bookawesome' ),
                 'params'     => array(
                     array(
-                        'type'        => 'dropdown',
-                        'heading'     => __('Icon'),
-                        'param_name'  => 'awe_item_icon',
-                        'admin_label' => true,
-                        'value'       => array(
-                            'Gift'      => 'icon-gift',
-                            'Strategy'  => 'icon-strategy',
-                            'Wine'      => 'icon-wine',
-                            'Beaker'    => 'icon-beaker',
-                            'Dial'      => 'icon-dial',
-                            'Shield'    => 'icon-shield',
-                        ),
+                        'type'       => 'attach_images',
+                        'param_name' => 'bg',
+                        'heading'    => esc_html__('Avatar', 'bookawesome')
                     ),
                     array(
                         'type'       => 'textfield',
-                        'param_name' => 'awe_item_title',
-                        'heading'    => esc_html__('Title', 'bookawesome')
+                        'param_name' => 'name',
+                        'heading'    => esc_html__('Name', 'bookawesome')
+                    ),
+                    array(
+                         'type'       => 'textfield',
+                         'param_name' => 'specialized',
+                         'heading'    => esc_html__('Specialized', 'bookawesome')
                     ),
                     array(
                         'type'       => 'textfield',
-                        'param_name' => 'awe_item_desc',
-                        'heading'    => esc_html__('Description', 'bookawesome')
+                        'param_name' => 'phone',
+                        'heading'    => esc_html__('Phone', 'bookawesome')
                     ),
+                    array(
+                        'type'       => 'textfield',
+                        'param_name' => 'email',
+                        'heading'    => esc_html__('Email', 'bookawesome')
+                    ),
+                    array(
+                        'type'       => 'param_group',
+                        'param_name' => 'items_social',
+                        'heading'    => esc_html__( 'Social', 'bookawesome' ),
+                        'params'     => array(
+                            array(
+                                'type'        => 'dropdown',
+                                'heading'     => __('Social'),
+                                'param_name'  => 'icon',
+                                'admin_label' => true,
+                                'value'       => array(
+                                    'Facebook'       => 'facebook',
+                                    'Linkedin'       => 'linkedin',
+                                    'Instagram'      => 'instagram',
+                                    'Youtube-play'   => 'youtube-play',
+                                    'Youtube'        => 'youtube',
+                                    'Google-plus'    => 'google-plus',
+                                ),
+                            ),
+                            array(
+                                'type'       => 'textfield',
+                                'param_name' => 'url',
+                                'heading'    => esc_html__('Url', 'bookawesome')
+                            ),
+                        )
+                    )
                 )
             )
-
         );
 
         return array(

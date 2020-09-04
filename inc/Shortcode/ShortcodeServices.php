@@ -47,9 +47,9 @@ class ShortcodeServices extends AbstractShortcode
             'posts_per_page' => -1,
             'post_type'      => 'awe_services_pt'
         );
-        $listProjects = get_posts( $args );
+        $listService = get_posts( $args );
         $argsPost = [];
-        foreach ($listProjects as $value) {
+        foreach ($listService as $value) {
             $tmp          = [];
             $tmp['label'] = $value->post_title;
             $tmp['value'] = $value->ID;
@@ -83,7 +83,7 @@ class ShortcodeServices extends AbstractShortcode
             array(
                 'type'       => 'autocomplete',
                 'param_name' => 'list_service_vc',
-                'heading'    => esc_html__('Featured tours', 'bookawesome'),
+                'heading'    => esc_html__('Services', 'bookawesome'),
                 'settings'   => array(
                     'multiple'       => true,
                     'sortable'       => true,

@@ -29,6 +29,8 @@ class ShortcodeProcedure extends AbstractShortcode
         $atts = vc_map_get_attributes($this->get_name(), $atts);
         $atts = array_map('trim', $atts);
 
+        $listItems = vc_param_group_parse_atts( $atts['items'] );
+
         ob_start();
         include $this->parent->locateTemplate('shortcode-procedure.tpl.php');
         return ob_get_clean();
@@ -45,13 +47,52 @@ class ShortcodeProcedure extends AbstractShortcode
         $params = array(
             array(
                 'type'       => 'attach_image',
-                'param_name' => 'las_about_image',
+                'param_name' => 'awe_procedure_bg',
                 'heading'    => esc_html__('Background', 'bookawesome')
             ),
             array(
                 'type'       => 'textfield',
-                'param_name' => 'awe_item_title',
+                'param_name' => 'awe_procedure_sub_title',
+                'heading'    => esc_html__('Sub Title', 'bookawesome')
+            ),
+            array(
+                'type'       => 'textfield',
+                'param_name' => 'awe_procedure_title',
                 'heading'    => esc_html__('Title', 'bookawesome')
+            ),
+            array(
+                'type'       => 'textfield',
+                'param_name' => 'awe_procedure_desc',
+                'heading'    => esc_html__('Description', 'bookawesome')
+            ),
+            array(
+                'type'       => 'param_group',
+                'param_name' => 'items',
+                'heading'    => esc_html__( 'List Item', 'bookawesome' ),
+                'params'     => array(
+                    array(
+                        'type'       => 'textfield',
+                        'param_name' => 'title',
+                        'heading'    => esc_html__('Title', 'bookawesome')
+                    ),
+                    array(
+                        'type'       => 'textarea',
+                        'param_name' => 'desc',
+                        'heading'    => esc_html__('Description', 'bookawesome')
+                    ),
+                    array(
+                        'type'       => 'param_group',
+                        'param_name' => 'items_content',
+                        'heading'    => esc_html__( 'List Item', 'bookawesome' ),
+                        'params'     => array(
+                            array(
+                                'type'       => 'textfield',
+                                'param_name' => 'title_content',
+                                'heading'    => esc_html__('Item', 'bookawesome')
+                            )
+                        )
+                    )
+                )
             )
         );
 

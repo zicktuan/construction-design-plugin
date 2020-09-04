@@ -1,33 +1,42 @@
-<div data-section="sections/contact.html">
-    <div class="container space-lg" id="contact">
-        <div class="row">
-            <div class="col-sm-12 text-center">
-                <h1 class="font-cursive hr-after-center">
-                    Reservations
-                </h1>
+<div id="pg-7788-6" class="panel-grid panel-has-style">
+    <div class="siteorigin-panels-stretch panel-row-style panel-row-style-for-7788-6"
+         data-stretch-type="full"
+         style="background-image:url(<?php echo !empty($atts['awe_wa_bg']) ? wp_get_attachment_url($atts['awe_wa_bg']) : ''?>);"
+    >
+        <div id="pgc-7788-6-0" class="panel-grid-cell">
+            <div id="panel-7788-6-0-0" class="so-panel widget widget_black-studio-tinymce widget_black_studio_tinymce panel-first-child panel-last-child" data-index="11">
+                <div class="animate animate-1 panel-widget-style panel-widget-style-for-7788-6-0-0">
+                    <div class="textwidget">
+                        <?php echo !empty($atts['awe_wa_sub_title']) ? '<p><span class="subtitle dash-true style-light text-default">'.$atts['awe_wa_sub_title'].'</span></p>' : ''?>
+                        <?php if(!empty($atts['awe_wa_title'])): ?>
+                        <h2>
+<!--                            <strong><span style="color: #ffffff;">Milestones that we proudly accomplished &amp; lead us forward.</span><br /> </strong>-->
+                            <strong><span style="color: #ffffff;"><?php echo $atts['awe_wa_title'] ?></span><br /> </strong>
+                        </h2>
+                        <?php endif ?>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row vertical-align">
-            <div class="col-sm-8 col-sm-offset-2 text-center">
-                <form method="post" name="contactform" class="row">
-                    <fieldset>
-                        <input class="text-center font-cursive form-control input-lg" name="name" type="text" size="30" value="" placeholder="Name">
-                        <br>
-                        <input class="text-center font-cursive form-control input-lg" name="email" type="text" size="30" value="" placeholder="Email">
-                        <br>
-                        <input class="text-center font-cursive form-control input-lg" name="phone" type="text" size="30" value="" placeholder="Phone">
-                        <br>
-                    </fieldset>
-                    <fieldset>
-                        <textarea class="text-center font-cursive form-control input-lg" name="comments" cols="40" rows="4" placeholder="Message"></textarea>
-                        <p class="margin-top-15">
-                            <button type="submit" class="btn btn-dark btn-fill btn-lg" value="Submit">
-                                Send Message
-                            </button>
-                        </p>
-                    </fieldset>
-                    <input type="hidden" name="XrUsGEYAeiJKVt" value="sBFV6x5YgM@HGN"><input type="hidden" name="KbloPAGL" value="Yrx*h0PA"><input type="hidden" name="apwJkTuZOvABt" value="[JfUA70GFZPI1"><input type="hidden" name="mjgrWIGNhPRO" value="VWPIO7rpQS0Y"></form>
+        <?php if(!empty($listItems[0])): ?>
+            <?php $i = 0; foreach ($listItems as $item): $i++?>
+            <div id="pgc-7788-6-<?php echo $i ?>" class="panel-grid-cell">
+                <div id="panel-7788-6-<?php echo $i ?>-0" class="so-panel widget widget_interico_number_box panel-first-child panel-last-child" data-index="12">
+                    <div class="animate animate-2 panel-widget-style panel-widget-style-for-7788-6-<?php echo $i ?>-0">
+                        <?php if(!empty($item['title']) || !empty($item['parameter'])) :?>
+                        <div class="number-box style-dark">
+                            <div class="number-box-number"><?php echo !empty($item['parameter']) ? $item['parameter'] : ''?></div>
+                            <div class="content-box">
+                                <div class="content-box-info">
+                                    <h3><?php echo !empty($item['title']) ? $item['title'] : ''?></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
             </div>
-        </div>
+            <?php endforeach; ?>
+        <?php endif ?>
     </div>
 </div>

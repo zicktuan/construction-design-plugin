@@ -29,6 +29,8 @@
             $atts = vc_map_get_attributes($this->get_name(), $atts);
             $atts = array_map('trim', $atts);
 
+            $listItems = vc_param_group_parse_atts( $atts['items'] );
+
             ob_start();
             include $this->parent->locateTemplate('shortcode-we-accomplished.tpl.php');
             return ob_get_clean();
@@ -43,7 +45,39 @@
          */
         public function map() {
             $params = array(
-
+                array(
+                    'type'       => 'attach_images',
+                    'param_name' => 'awe_wa_bg',
+                    'heading'    => esc_html__('Background', 'bookawesome')
+                ),
+                array(
+                    'type'       => 'textfield',
+                    'param_name' => 'awe_wa_sub_title',
+                    'heading'    => esc_html__('Sub Title', 'bookawesome')
+                ),
+                array(
+                    'type'       => 'textfield',
+                    'param_name' => 'awe_wa_title',
+                    'heading'    => esc_html__('Title', 'bookawesome')
+                ),
+                array(
+                    'type'       => 'param_group',
+                    'param_name' => 'items',
+                    'heading'    => esc_html__( 'List Item', 'bookawesome' ),
+                    'description'=> __('For example: number of projects, number of years of establishment, number of members', 'bookawesome'),
+                    'params'     => array(
+                        array(
+                            'type'       => 'textfield',
+                            'param_name' => 'title',
+                            'heading'    => esc_html__('Title', 'bookawesome')
+                        ),
+                        array(
+                            'type'       => 'textfield',
+                            'param_name' => 'parameter',
+                            'heading'    => esc_html__('Parameter', 'bookawesome')
+                        ),
+                    )
+                )
             );
 
             return array(
