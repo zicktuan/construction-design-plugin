@@ -5,54 +5,40 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 title-link-box clearfix dark">
-                            <h2 class="section-title">Latest news</h2>
-                            <a class="btn-read-more" href="https://www.demo.themicart.com/interico-wp/blog/">All articles</a>
+                            <?php echo !empty($atts['awe_latest_post_title']) ? '<h2 class="section-title">'.$atts['awe_latest_post_title'].'</h2>' : '' ?>
+                            <?php if($atts['awe_latest_post_url']): ?>
+                            <a class="btn-read-more" href="<?php echo $atts['awe_latest_post_url'] ?>"><?php _e('All articles', 'bookawesome'); ?></a>
+                            <?php endif; ?>
                         </div>
                     </div>
+                    <?php $argsPost = !empty(!empty($atts['awe_latest_post'])) ? explode(',', $atts['awe_latest_post']) : [];?>
+                    <?php if(!empty($argsPost) && is_array($argsPost)): ?>
                     <div class="divider-light"></div>
                     <div class="row">
                         <div id="news">
-                            <div class="col-sm-4">
-                                <a href="https://www.demo.themicart.com/interico-wp/what-its-like-to-be-an-interior-designer/">
-                                    <article class="blog-post-box light">
-                                        <div class="image-container"> <img src="https://www.demo.themicart.com/interico-wp/wp-content/uploads/2016/07/designer-430x220.jpg" srcset="https://www.demo.themicart.com/interico-wp/wp-content/uploads/2016/07/designer-900x450.jpg 900w" sizes="(min-width: 781px) 380px, calc(100vw - 30px)" alt="What it&#039;s like to be an interior designer"></div>
-                                        <p class="blog-date"><span>July 28, 2016</span></p>
-                                        <div class="content-box-info">
-                                            <h3 class="box-heading">What it&#039;s like to be an interior designer</h3>
-                                            <p> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it...</p>
-                                            <div class="btn-read-more">Read More</div>
-                                        </div>
-                                    </article>
-                                </a>
-                            </div>
-                            <div class="col-sm-4">
-                                <a href="https://www.demo.themicart.com/interico-wp/10-tips-for-home-renovation-projects/">
-                                    <article class="blog-post-box light">
-                                        <div class="image-container"> <img src="https://www.demo.themicart.com/interico-wp/wp-content/uploads/2016/07/breather-187919-unsplash-430x220.jpg" srcset="https://www.demo.themicart.com/interico-wp/wp-content/uploads/2016/07/breather-187919-unsplash-900x450.jpg 900w" sizes="(min-width: 781px) 380px, calc(100vw - 30px)" alt="10 Tips for Home Renovation Projects"></div>
-                                        <p class="blog-date"><span>July 28, 2016</span></p>
-                                        <div class="content-box-info">
-                                            <h3 class="box-heading">10 Tips for Home Renovation Projects</h3>
-                                            <p> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it...</p>
-                                            <div class="btn-read-more">Read More</div>
-                                        </div>
-                                    </article>
-                                </a>
-                            </div>
-                            <div class="col-sm-4">
-                                <a href="https://www.demo.themicart.com/interico-wp/decorative-lighting-installation-trends-in-2018/">
-                                    <article class="blog-post-box light">
-                                        <div class="image-container"> <img src="https://www.demo.themicart.com/interico-wp/wp-content/uploads/2016/07/concrete-office-430x220.jpg" srcset="https://www.demo.themicart.com/interico-wp/wp-content/uploads/2016/07/concrete-office-900x450.jpg 900w" sizes="(min-width: 781px) 380px, calc(100vw - 30px)" alt="Decorative lighting installation trends in 2018."></div>
-                                        <p class="blog-date"><span>July 28, 2016</span></p>
-                                        <div class="content-box-info">
-                                            <h3 class="box-heading">Decorative lighting installation trends in 2018.</h3>
-                                            <p> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it...</p>
-                                            <div class="btn-read-more">Read More</div>
-                                        </div>
-                                    </article>
-                                </a>
-                            </div>
+                            <?php foreach ($argsPost as $item):
+                                $post      = get_post($item);
+                                $thumbnail = get_the_post_thumbnail_url($item, 'full');
+                                ?>
+                                <div class="col-sm-4">
+                                    <a href="<?php echo get_the_permalink($item); ?>">
+                                        <article class="blog-post-box light">
+                                            <div class="image-container">
+                                                <img src="<?php echo get_the_post_thumbnail_url( $post, '' ) ?>" sizes="(min-width: 781px) 380px, calc(100vw - 30px)" alt="<?php echo !empty($post->post_title) ? $post->post_title : '' ?>">
+                                            </div>
+                                            <p class="blog-date"><span><?php echo  date('M d, Y', strtotime($post->post_date)); ?></span></p>
+                                            <div class="content-box-info">
+                                                <h3 class="box-heading"><?php echo !empty($post->post_title) ? $post->post_title : '' ?></h3>
+                                                <p> <?php echo !empty( $post->post_content ) ? wp_trim_words( $post->post_content, 20, '...' ) : '' ?></p>
+                                                <div class="btn-read-more"><?php _e('Read More', 'bookawesome');?></div>
+                                            </div>
+                                        </article>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

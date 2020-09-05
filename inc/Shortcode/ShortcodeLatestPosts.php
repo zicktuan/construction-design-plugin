@@ -29,8 +29,6 @@ class ShortcodeLatestPosts extends AbstractShortcode
         $atts = vc_map_get_attributes($this->get_name(), $atts);
         $atts = array_map('trim', $atts);
 
-        $listItems = vc_param_group_parse_atts( $atts['items'] );
-
         ob_start();
         include $this->parent->locateTemplate('shortcode-latest-posts.tpl.php');
         return ob_get_clean();
@@ -44,51 +42,45 @@ class ShortcodeLatestPosts extends AbstractShortcode
      * @see vc_lean_map()
      */
     public function map() {
-        $argsCat = [];
-        $categories = get_categories();
-        if( !empty($categories) ) {
-            foreach($categories as $category ) {
-                $cats = [];
-                $cats['label'] = $category->name;
-                $cats['id'] = $category->term_id;
-                $argsCat[] = $cats;
-            }
+        $args = array(
+            'posts_per_page' => -1,
+            'post_type'      => 'post'
+        );
+        $listService = get_posts( $args );
+        $argsPost = [];
+        foreach ($listService as $value) {
+            $tmp          = [];
+            $tmp['label'] = $value->post_title;
+            $tmp['value'] = $value->ID;
+            $argsPost[]   = $tmp;
         }
 
         $params = array(
             array(
                 "type" => "textfield",
                 "heading" => __( "Title", "bookawesome" ),
-                "param_name" => "awe_post_title",
+                "param_name" => "awe_latest_post_title",
             ),
             array(
                 "type" => "textfield",
-                "heading" => __( "Description", "bookawesome" ),
-                "param_name" => "awe_post_desc",
+                "heading" => __( "Url all articles", "bookawesome" ),
+                "param_name" => "awe_latest_post_url",
+                'std'   => '#'
             ),
             array(
-                "type" => "textfield",
-                "heading" => __( "Button Name", "bookawesome" ),
-                "param_name" => "awe_post_btn_name",
-                "value" => "Learn more"
-            ),
-            array(
-                "type" => "textfield",
-                "heading" => __( "Url", "bookawesome" ),
-                "param_name" => "awe_post_url_btn",
-                "value" => "#"
-            ),
-            array(
-                "type" => "dropdown",
-                "heading" => __( "List Category", "bookawesome" ),
-                "param_name" => "category_latest_posts",
-                "value" => $argsCat,
-            ),
-            array(
-                "type" => "textfield",
-                "heading" => __( "Number Post", "bookawesome" ),
-                "param_name" => "number_posts",
-                "value" => 3,
+                'type'       => 'autocomplete',
+                'param_name' => 'awe_latest_post',
+                'heading'    => esc_html__('Posts', 'bookawesome'),
+                'settings'   => array(
+                    'multiple'       => true,
+                    'sortable'       => true,
+                    'min_length'     => 1,
+                    'no_hide'        => true,
+                    'unique_values'  => true,
+                    'display_inline' => true,
+                    'values'         => $argsPost
+                ),
+                'save_always' => true,
             ),
         );
 
